@@ -21,4 +21,10 @@ export const MovieDetailsGenres = styled.div`
 export const MovieDetailsLink = styled(NavLink)`
   color: #e6e6e6;
   margin: 0;
+  text-decoration: none;
+  font-size: 14px;
+
+  &.active {
+    color: orange;
+  }
 `;
