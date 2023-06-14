@@ -5,7 +5,7 @@ export const MovieDetailsPage = styled.div`
   background-color: #0a0909;
   color: #e6e6e6;
   padding: 20px;
-  padding-bottom: 40px;
+  padding-bottom: 100px;
 `;
 
 export const MovieDetailsDiv = styled.div`
