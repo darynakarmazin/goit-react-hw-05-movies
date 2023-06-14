@@ -1,5 +1,5 @@
 import styled from 'styled-components';
-import { NavLink } from 'react-router-dom';
+import { Link, NavLink } from 'react-router-dom';
 
 export const MovieDetailsPage = styled.div`
   background-color: #0a0909;
@@ -27,4 +27,16 @@ export const MovieDetailsLink = styled(NavLink)`
   &.active {
     color: orange;
   }
+`;
+
+export const GoBackLink = styled(Link)`
+  display: inline-block;
+  color: #e6e6e6;
+  font-size: 12px;
+  text-decoration: none;
+  background-color: transparent;
+  border: 0.5px solid #e6e6e6;
+  border-radius: 9px;
+  padding: 2px 4px;
+  margin-bottom: 20px;
 `;

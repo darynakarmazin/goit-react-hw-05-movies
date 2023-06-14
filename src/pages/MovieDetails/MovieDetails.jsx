@@ -1,10 +1,11 @@
 import React, { useEffect, useState } from 'react';
-import { Outlet, useParams } from 'react-router-dom';
+import { Link, Outlet, useParams } from 'react-router-dom';
 import {
   MovieDetailsPage,
   MovieDetailsDiv,
   MovieDetailsGenres,
   MovieDetailsLink,
+  GoBackLink,
 } from './MovieDetails.styled';
 
 export function MovieDetails() {
@@ -33,6 +34,7 @@ export function MovieDetails() {
   return (
     movie && (
       <MovieDetailsPage>
+        <GoBackLink to="/">&larr; Go back</GoBackLink>
         <MovieDetailsDiv>
           <img
             width="200px"
