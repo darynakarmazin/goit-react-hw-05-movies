@@ -3,7 +3,7 @@ import { NavLink } from 'react-router-dom';
 
 export const HeaderTag = styled.header`
   position: sticky;
-  padding: 0 16px;
+  padding: 0 20px;
   z-index: 10;
   top: 0;
   left: 0;
