@@ -11,3 +11,5 @@ ReactDOM.createRoot(document.getElementById('root')).render(
     </BrowserRouter>
   </React.StrictMode>
 );
+
+// const API_KEY = 'ad8ecf745f5bbe50fc648c0859fa1701';
