@@ -2,5 +2,5 @@
   "compilerOptions": {
     "baseUrl": "src"
   },
-  "include": ["src", "src/pages/Movies.jsx"]
+  "include": ["src", "src/pages/Movies.jsx", "src/pages/MovieDetails/MovieDetails.styled.jsx"]
 }
