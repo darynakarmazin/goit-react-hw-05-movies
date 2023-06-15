@@ -55,6 +55,7 @@ export function MovieDetails() {
             </MovieDetailsGenres>
           </div>
         </MovieDetailsDiv>
+        <h4>Additional information</h4>
         <ul>
           <li>
             <MovieDetailsLink to="cast">Cast</MovieDetailsLink>
