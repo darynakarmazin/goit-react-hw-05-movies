@@ -1,5 +1,5 @@
 import React, { Suspense, useEffect, useState } from 'react';
-import { Outlet, useLocation, useParams } from 'react-router-dom';
+import { Outlet, useParams } from 'react-router-dom';
 import {
   MovieDetailsPage,
   MovieDetailsDiv,
@@ -22,13 +22,16 @@ function MovieDetails() {
       .catch(err => console.error('error:' + err));
   }, [url]);
 
-  const location = useLocation();
-  const backLinkHref = location.state?.from ?? '/';
+  // const location = useLocation();
+  // const backLinkHref = location.state?.from ?? '/';
+  // {
+  //   backLinkHref;
+  // }
 
   return (
     movie && (
       <MovieDetailsPage>
-        <GoBackLink to={backLinkHref}>&larr; Go back</GoBackLink>
+        <GoBackLink to="/">&larr; Go back</GoBackLink>
         <MovieDetailsDiv>
           <img
             width="200px"
