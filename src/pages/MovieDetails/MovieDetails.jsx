@@ -7,24 +7,15 @@ import {
   MovieDetailsLink,
   GoBackLink,
 } from './MovieDetails.styled';
+import { fetchMovies } from '../../Api/fetchMovies';
 
 export function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState('');
+  const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZDhlY2Y3NDVmNWJiZTUwZmM2NDhjMDg1OWZhMTcwMSIsInN1YiI6IjY0ODhjMTU2ZDJiMjA5MDBjYTIxNzA5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4vxGV4kBszJbv90PYcnQ1DUyBmnKxmAR_P1khjcXgUk',
-      },
-    };
-
-    fetch(url, options)
-      .then(res => res.json())
+    fetchMovies(url)
       .then(results => {
         setMovie(results);
       })

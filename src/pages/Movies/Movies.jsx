@@ -1,6 +1,7 @@
 import { Searchbar } from 'components/Searchbar/Searchbar';
 import React, { useEffect, useState } from 'react';
 import { MoviesItem, MoviesTitle } from './Movies.styled';
+import { fetchMovies } from '../../Api/fetchMovies';
 
 export function Movies() {
   const [searchQuery, setSearchQuery] = useState('');
@@ -8,17 +9,7 @@ export function Movies() {
 
   useEffect(() => {
     const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
-    const options = {
-      method: 'GET',
-      headers: {
-        accept: 'application/json',
-        Authorization:
-          'Bearer eyJhbGciOiJIUzI1NiJ9.eyJhdWQiOiJhZDhlY2Y3NDVmNWJiZTUwZmM2NDhjMDg1OWZhMTcwMSIsInN1YiI6IjY0ODhjMTU2ZDJiMjA5MDBjYTIxNzA5NyIsInNjb3BlcyI6WyJhcGlfcmVhZCJdLCJ2ZXJzaW9uIjoxfQ.4vxGV4kBszJbv90PYcnQ1DUyBmnKxmAR_P1khjcXgUk',
-      },
-    };
-
-    fetch(url, options)
-      .then(res => res.json())
+    fetchMovies(url)
       .then(results => {
         setMovies(results);
       })
