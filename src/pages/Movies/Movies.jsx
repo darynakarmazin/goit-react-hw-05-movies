@@ -1,28 +1,26 @@
-import { Searchbar } from 'components/Searchbar/Searchbar';
 import React, { useEffect, useState } from 'react';
+import { useSearchParams } from 'react-router-dom';
 import { MoviesItem, MoviesTitle } from './Movies.styled';
 import { fetchMovies } from '../../Api/fetchMovies';
+import { Searchbar } from 'components/Searchbar/Searchbar';
 
-export default function Movies() {
-  const [searchQuery, setSearchQuery] = useState('');
+function Movies() {
   const [movies, setMovies] = useState('');
+  const [searchParams, setSearchParams] = useSearchParams();
 
   useEffect(() => {
+    const searchQuery = searchParams.get('query') ?? '';
     const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
     fetchMovies(url)
       .then(results => {
         setMovies(results);
       })
       .catch(err => console.error('error:' + err));
-  }, [searchQuery]);
-
-  const handleFormSubmit = searchQuery => {
-    setSearchQuery(searchQuery);
-  };
+  }, [searchParams]);
 
   return (
     <>
-      <Searchbar onSubmit={handleFormSubmit} />
+      <Searchbar setSearchParams={setSearchParams} />
       {movies && (
         <ul>
           {movies.results.map(result => {
@@ -39,3 +37,5 @@ export default function Movies() {
     </>
   );
 }
+
+export default Movies;

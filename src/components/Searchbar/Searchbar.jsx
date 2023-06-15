@@ -1,20 +1,17 @@
 import React, { useState } from 'react';
 import { SearchbarHeader, SearchForm } from './Searchbar.styled';
 
-export function Searchbar({ onSubmit }) {
-  const [searchQuery, setSearchQuery] = useState('');
+export function Searchbar({ setSearchParams }) {
+  const [query, setQuery] = useState('');
 
-  const handleQueryChange = event => {
-    setSearchQuery(event.currentTarget.value.toLowerCase());
+  const handleSubmit = e => {
+    e.preventDefault();
+
+    setSearchParams({ query });
   };
 
-  const handleSubmit = event => {
-    event.preventDefault();
-    if (searchQuery.trim() === '') {
-      return;
-    }
-    onSubmit(searchQuery);
-    setSearchQuery('');
+  const handleQueryChange = ({ target: { value } }) => {
+    setQuery(value);
   };
 
   return (
@@ -26,7 +23,7 @@ export function Searchbar({ onSubmit }) {
 
         <input
           onChange={handleQueryChange}
-          value={searchQuery}
+          value={query}
           className="input"
           type="text"
           autoComplete="off"
