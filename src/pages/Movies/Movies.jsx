@@ -3,7 +3,7 @@ import React, { useEffect, useState } from 'react';
 import { MoviesItem, MoviesTitle } from './Movies.styled';
 import { fetchMovies } from '../../Api/fetchMovies';
 
-function Movies() {
+export default function Movies() {
   const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState('');
 
@@ -39,5 +39,3 @@ function Movies() {
     </>
   );
 }
-
-export default Movies;

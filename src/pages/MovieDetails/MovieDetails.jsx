@@ -9,7 +9,7 @@ import {
 } from './MovieDetails.styled';
 import { fetchMovies } from '../../Api/fetchMovies';
 
-function MovieDetails() {
+export default function MovieDetails() {
   const { movieId } = useParams();
   const [movie, setMovie] = useState('');
   const url = `https://api.themoviedb.org/3/movie/${movieId}?language=en-US`;
@@ -65,5 +65,3 @@ function MovieDetails() {
     )
   );
 }
-
-export default MovieDetails;
