@@ -24,7 +24,6 @@ export function Reviews() {
       .catch(err => console.error('error:' + err));
   }, [movieId]);
 
-  console.log(allReviews);
   return (
     allReviews && (
       <ul>
