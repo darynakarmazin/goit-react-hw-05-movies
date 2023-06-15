@@ -1,12 +1,13 @@
+import { Searchbar } from 'components/Searchbar/Searchbar';
 import React, { useEffect, useState } from 'react';
-import { NavLink } from 'react-router-dom';
+import { MoviesItem, MoviesTitle } from './Movies.styled';
 
 export function Movies() {
-  const [query, setQuery] = useState('home along');
+  const [searchQuery, setSearchQuery] = useState('');
   const [movies, setMovies] = useState('');
 
   useEffect(() => {
-    const url = `https://api.themoviedb.org/3/search/movie?query=${query}&include_adult=false&language=en-US&page=1`;
+    const url = `https://api.themoviedb.org/3/search/movie?query=${searchQuery}&include_adult=false&language=en-US&page=1`;
     const options = {
       method: 'GET',
       headers: {
@@ -19,29 +20,31 @@ export function Movies() {
     fetch(url, options)
       .then(res => res.json())
       .then(results => {
-        setMovies(prevResult => results);
+        setMovies(results);
       })
       .catch(err => console.error('error:' + err));
-  }, [query]);
+  }, [searchQuery]);
 
-  console.log(movies);
+  const handleFormSubmit = searchQuery => {
+    setSearchQuery(searchQuery);
+  };
 
   return (
-    movies && (
-      <>
-        <div>Movies PAGE</div>
+    <>
+      <Searchbar onSubmit={handleFormSubmit} />
+      {movies && (
         <ul>
           {movies.results.map(result => {
             return (
-              <li key={result.id}>
-                <NavLink to={`${result.id}`}>
+              <MoviesTitle key={result.id}>
+                <MoviesItem to={`${result.id}`}>
                   <p>{result.original_title}</p>
-                </NavLink>
-              </li>
+                </MoviesItem>
+              </MoviesTitle>
             );
           })}
         </ul>
-      </>
-    )
+      )}
+    </>
   );
 }

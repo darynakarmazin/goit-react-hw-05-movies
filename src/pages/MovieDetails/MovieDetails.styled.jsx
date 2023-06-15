@@ -2,15 +2,18 @@ import styled from 'styled-components';
 import { Link, NavLink } from 'react-router-dom';
 
 export const MovieDetailsPage = styled.div`
-  background-color: #0a0909;
   color: #e6e6e6;
   padding: 20px;
   padding-bottom: 100px;
+  background-color: #0a0909;
+  border-bottom: 1px solid #ffffff;
 `;
 
 export const MovieDetailsDiv = styled.div`
   display: flex;
   gap: 40px;
+  background-color: #0a0909;
+  border-bottom: 1px solid #ffffff;
 `;
 
 export const MovieDetailsGenres = styled.div`

@@ -26,7 +26,7 @@ export function MovieDetails() {
     fetch(url, options)
       .then(res => res.json())
       .then(results => {
-        setMovie(prevResult => results);
+        setMovie(results);
       })
       .catch(err => console.error('error:' + err));
   }, [movieId]);
@@ -60,9 +60,7 @@ export function MovieDetails() {
             <MovieDetailsLink to="cast">Cast</MovieDetailsLink>
           </li>
           <li>
-            <MovieDetailsLink to="reviews">
-              Go through the reviews
-            </MovieDetailsLink>
+            <MovieDetailsLink to="reviews">Reviews</MovieDetailsLink>
           </li>
         </ul>
         <Outlet />

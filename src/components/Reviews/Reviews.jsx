@@ -19,23 +19,23 @@ export function Reviews() {
     fetch(url, options)
       .then(res => res.json())
       .then(results => {
-        setAllReviews(prevResult => results);
+        setAllReviews(results);
       })
       .catch(err => console.error('error:' + err));
   }, [movieId]);
 
-  return (
-    allReviews && (
-      <ul>
-        {allReviews.results.map(result => {
-          return (
-            <li key={result.id}>
-              <h3>{result.author}</h3>
-              <p>{result.content}</p>
-            </li>
-          );
-        })}
-      </ul>
-    )
+  return allReviews.total_results ? (
+    <ul>
+      {allReviews.results.map(result => {
+        return (
+          <li key={result.id}>
+            <h3>{result.author}</h3>
+            <p>{result.content}</p>
+          </li>
+        );
+      })}
+    </ul>
+  ) : (
+    <p>We don't have any reviews for this movie.</p>
   );
 }

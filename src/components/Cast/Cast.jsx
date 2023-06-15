@@ -19,7 +19,7 @@ export function Cast() {
     fetch(url, options)
       .then(res => res.json())
       .then(results => {
-        setCredits(prevResult => results);
+        setCredits(results);
       })
       .catch(err => console.error('error:' + err));
   }, [movieId]);
