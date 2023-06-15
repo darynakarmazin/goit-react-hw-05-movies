@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
 import { fetchMovies } from '../../Api/fetchMovies';
 
-export function Reviews() {
+function Reviews() {
   const { movieId } = useParams();
   const [allReviews, setAllReviews] = useState('');
 
@@ -30,3 +30,5 @@ export function Reviews() {
     <p>We don't have any reviews for this movie.</p>
   );
 }
+
+export default Reviews;
